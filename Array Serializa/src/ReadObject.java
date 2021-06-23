@@ -10,7 +10,7 @@ public class ReadObject {
 
         try(FileInputStream fis = new FileInputStream("data.ser")){
             ObjectInputStream ois = new ObjectInputStream(fis);
-
+            
             Person[] people = (Person[])ois.readObject();
 
             for(Person i:people){
