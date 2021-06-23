@@ -3,25 +3,21 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-
 public class ReadObject {
-    public static void main(String[] args) throws FileNotFoundException {
-        System.out.println("Reading object....");
-        try(FileInputStream fis = new FileInputStream("people.bin")){
+    public static void main(String[] args) throws FileNotFoundException{
+        
+        System.out.println("reading object....");
+
+        try(FileInputStream fis = new FileInputStream("data.ser")){
             ObjectInputStream ois = new ObjectInputStream(fis);
 
-            Person person1 = (Person)ois.readObject();
-            Person person2 = (Person)ois.readObject();
+            Person[] people = (Person[])ois.readObject();
 
-
+            for(Person i:people){
+                System.out.println(i);
+            }
 
             ois.close();
-
-            System.out.println(person1);
-            System.out.println(person2);
-
-
-
             
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -30,5 +26,6 @@ public class ReadObject {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        
     }
 }
